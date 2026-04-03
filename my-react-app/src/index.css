@@ -11,7 +11,14 @@ body {
   display: block;
   overflow-x: hidden;
 }
-
+.service-btn {
+  text-decoration: none;
+  color: var(--text);
+  display: inline-block;
+}
+.service-btn:hover {
+  text-decoration: none;
+}
 * {
   box-sizing: border-box;
 }

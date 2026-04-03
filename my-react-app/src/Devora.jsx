@@ -55,9 +55,11 @@ const styles = `
   }
 
   ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-track { background: #111110; }
   ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
-
+  ::-webkit-scrollbar-track {
+    background: #0f0f10;
+  }
   /* ─────────── NAVBAR ─────────── */
   .navbar {
     position: fixed;
@@ -1069,6 +1071,7 @@ const SERVICES = [
     desc: "Premium website for restaurants and cafés with menu integration, photo gallery, and seamless contact experience.",
     price: "$1,500",
     delivery: "1–3 days",
+    link: "https://devoraservices.youcan.store/products/websites",
   },
   {
     tag: "Digital Experience",
@@ -1076,6 +1079,7 @@ const SERVICES = [
     desc: "Clean and modern digital menu optimized for mobile and fast browsing — no app download needed.",
     price: "$900",
     delivery: "1–3 days",
+    link: "https://devoraservices.youcan.store/products/digital-menu",
   },
   {
     tag: "Personal Brand",
@@ -1083,6 +1087,7 @@ const SERVICES = [
     desc: "Minimal, elegant portfolio for personal brands and creatives. Built to make a lasting first impression.",
     price: "$1,100",
     delivery: "1–3 days",
+    link: "https://devoraservices.youcan.store/products/personal-portfolio",
   },
 ];
 
@@ -1295,8 +1300,15 @@ export default function Devora() {
                   {s.delivery}
                 </div>
               </div>
-              <button className="service-btn" onClick={() => scrollTo("contact")}>Start this project →</button>
-            </div>
+              <a
+                href={s.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="service-btn"
+              >
+                Start this project →
+              </a>
+              </div>
           ))}
         </div>
       </section>
