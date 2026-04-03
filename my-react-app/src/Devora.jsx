@@ -775,21 +775,20 @@ const styles = `
 
   /* ─────────── FINAL CTA ─────────── */
   .final-cta-section {
-    box-shadow: inset 2px 0 0 var(--text), inset -2px 0 0 var(--text);
     background: var(--text);
     width: 100%;
     margin: 0;
     position: relative;
     overflow: hidden;
+    padding: 100px 0; /* 🔥 بدل 80px */
   }
   .final-cta-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 100px 80px;
+    padding: 0 80px; /* 🔥 padding غير content */
     text-align: center;
     position: relative;
     z-index: 1;
-    width: 100%;
   }
   .final-cta-bg {
     position: absolute;
@@ -799,6 +798,8 @@ const styles = `
       radial-gradient(circle at 70% 30%, rgba(167,139,250,0.12) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
+    width: 100%;
+    overflow: hidden;
   }
   .final-cta-label {
     display: inline-flex;
@@ -886,7 +887,6 @@ const styles = `
 
   /* ─────────── FOOTER ─────────── */
   .footer {
-    box-shadow: inset 2px 0 0 #111110, inset -2px 0 0 #111110;
     background: #111110;
     width: 100%;
     margin: 0;
@@ -898,7 +898,6 @@ const styles = `
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 80px 36px;
-    width: 100%;
   }
 
   .footer-top {
