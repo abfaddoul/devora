@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import logo from "./assets/noback.png";
-import faviconImg from "./assets/Logo dynamique sur fond gris sophistiqué.png";
+import logo from "./assets/vite.png";
+import faviconImg from "./assets/vite.png";
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
@@ -1177,7 +1177,7 @@ export default function Devora() {
     <>
       <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
         <button className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <img src={logo} alt="Devora" />
+          <img src={faviconImg} alt="Devora" />
         </button>
 
         <ul className="nav-links">
