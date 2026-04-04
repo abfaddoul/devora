@@ -968,6 +968,194 @@ const styles = `
     color: rgba(255,255,255,0.2);
   }
 
+  /* ─────────── PORTFOLIO ─────────── */
+  .portfolio-section { background: var(--bg); width: 100%; }
+  .portfolio-section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 80px;
+    width: 100%;
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 56px;
+  }
+  /* ── Card shell ── */
+  .portfolio-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(23,23,23,0.05), 0 1px 2px rgba(23,23,23,0.04);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.3s var(--ease);
+    cursor: default;
+    position: relative;
+  }
+  .portfolio-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 20px 48px rgba(23,23,23,0.11), 0 6px 16px rgba(23,23,23,0.06);
+    border-color: var(--border2);
+  }
+  /* ── Image area ── */
+  .portfolio-img-wrap {
+    width: 100%;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg2);
+    flex-shrink: 0;
+  }
+  .portfolio-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.55s var(--ease);
+  }
+  .portfolio-card:hover .portfolio-img-wrap img { transform: scale(1.06); }
+  /* subtle bottom gradient to ease image→body transition */
+  .portfolio-img-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.08));
+    pointer-events: none;
+  }
+  /* ── Badge — top-right of image ── */
+  .portfolio-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    color: var(--text);
+    background: rgba(255,255,255,0.92);
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 5px 12px;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(23,23,23,0.1);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  /* ── Year chip — top-left of image ── */
+  .portfolio-year {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    background: rgba(23,23,23,0.42);
+    padding: 4px 10px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    letter-spacing: 0.3px;
+    line-height: 1;
+  }
+  /* ── Card body ── */
+  .portfolio-body {
+    padding: 28px 28px 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .portfolio-client {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .portfolio-body h3 {
+    font-family: var(--font-head);
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.35px;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .portfolio-body > p {
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 22px;
+  }
+  /* ── Divider inside card ── */
+  .portfolio-card-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 18px;
+    flex-shrink: 0;
+  }
+  /* ── Tags row ── */
+  .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portfolio-tag {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text2);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 4px 11px;
+    border-radius: 100px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+  /* ── Bottom CTA banner ── */
+  .portfolio-bottom-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 36px 48px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: 0 2px 8px rgba(23,23,23,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio-bottom-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-mid));
+  }
+  .portfolio-bottom-cta-text { min-width: 0; }
+  .portfolio-bottom-cta-text p {
+    font-family: var(--font-head);
+    font-size: clamp(16px, 1.8vw, 21px);
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.4px;
+    line-height: 1.25;
+    margin: 0 0 4px;
+  }
+  .portfolio-bottom-cta-text p span { color: var(--accent); }
+  .portfolio-bottom-cta-text small {
+    font-size: 13px;
+    color: var(--text3);
+    font-weight: 400;
+  }
+  .portfolio-bottom-cta-btn { flex-shrink: 0; }
+
   /* ─────────── ANIMATIONS ─────────── */
   .fade-in {
     opacity: 0;
@@ -991,6 +1179,9 @@ const styles = `
     .value-header { flex-direction: column; gap: 20px; }
     .value-header-right { max-width: 100%; }
     .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-section-inner { padding: 80px 48px; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-bottom-cta { flex-direction: column; align-items: flex-start; padding: 32px 32px; }
     .why-grid { grid-template-columns: repeat(2, 1fr); }
     .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
     .process-step::after { display: none; }
@@ -1032,6 +1223,10 @@ const styles = `
     .value-card { padding: 28px 24px; }
     .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 28px 24px; }
+    .portfolio-section-inner { padding: 64px 20px; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-bottom-cta { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 18px; }
+    .portfolio-bottom-cta-btn .btn-accent { width: 100%; text-align: center; justify-content: center; }
     .why-section-inner { padding: 64px 20px; }
     .why-grid { grid-template-columns: 1fr; margin-top: 40px; }
     .why-card { padding: 28px 24px; }
@@ -1091,11 +1286,57 @@ const SERVICES = [
   },
 ];
 
+const PROJECTS = [
+  {
+    client: "Dr. Emily Carter",
+    category: "Medical Practice",
+    title: "Modern dermatology practice with a human touch.",
+    desc: "Trust-focused medical website with online appointment booking, patient resources, and a clean clinical aesthetic that puts new patients at ease.",
+    tags: ["Medical", "Appointment Booking", "Professional"],
+    img: "https://images.unsplash.com/photo-1629909615184-74f495363b67?w=900&q=85&auto=format&fit=crop",
+    year: "2024",
+  },
+  {
+    client: "Whitaker & Associates",
+    category: "Legal Services",
+    title: "A law firm website built on authority and trust.",
+    desc: "Professional legal website featuring case studies, practice areas, attorney profiles, and client testimonials — designed to convert high-value leads.",
+    tags: ["Legal", "Corporate", "Case Studies"],
+    img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=900&q=85&auto=format&fit=crop",
+    year: "2024",
+  },
+  {
+    client: "Olivia Bennett",
+    category: "Coaching & Personal Brand",
+    title: "A personal brand that inspires and converts.",
+    desc: "Warm, elegant coaching website with program pages, a booking system, and a personal story section that connects instantly with the right audience.",
+    tags: ["Coaching", "Personal Brand", "Growth"],
+    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=85&auto=format&fit=crop",
+    year: "2025",
+  },
+];
+
 const VALUES = [
-  { icon: "⚡", title: "Fast Delivery", desc: "From kickoff to launch in 1 to 3 days. No long waits, no drawn-out timelines." },
-  { icon: "✦", title: "Premium Design", desc: "Every pixel considered. Modern aesthetics built to position your brand above the rest." },
-  { icon: "📱", title: "Mobile Optimized", desc: "Flawless on every screen. Your website looks perfect on phone, tablet, or desktop." },
-  { icon: "📈", title: "Conversion-Focused", desc: "Structure and copy crafted to turn visitors into customers with clear flows and strong CTAs." },
+  {
+    icon: "⚡",
+    title: "Fast Delivery",
+    desc: "From kickoff to launch in 1 to 3 days. No long waits, no drawn-out timelines."
+  },
+  {
+    icon: "✦",
+    title: "Premium Design",
+    desc: "Every pixel considered. Modern aesthetics built to position your brand above the rest."
+  },
+  {
+    icon: "📱",
+    title: "Mobile Optimized",
+    desc: "Flawless on every screen. Your website looks perfect on phone, tablet, or desktop."
+  },
+  {
+    icon: "📈",
+    title: "Conversion-Focused",
+    desc: "Structure and copy crafted to turn visitors into customers with clear flows and strong CTAs."
+  }
 ];
 
 const WHY = [
@@ -1120,7 +1361,7 @@ const FAQS = [
   { q: "What if my project is more custom?", a: "We love unique briefs. For projects outside our standard packages, we work on custom pricing. Just share what you have in mind and we'll put together the right plan." },
 ];
 
-const NAV = ["Services", "Why Devora", "Process", "FAQ"];
+const NAV = ["Services", "Projects", "Why Devora", "Process", "FAQ"];
 const navId = (item) => item.toLowerCase().replace(/\s+/g, "-");
 
 /* ─── COMPONENT ─── */
@@ -1192,7 +1433,7 @@ export default function Devora() {
 
         <div className="nav-cta-group">
           <button className="btn-ghost" onClick={() => scrollTo("faq")}>FAQ</button>
-          <button className="btn-solid" onClick={() => scrollTo("contact")}>Start Project</button>
+          <a href="https://devoraservices.youcan.store/" target="_blank" rel="noopener noreferrer"><button className="btn-solid">Start Project</button></a>
         </div>
 
         <button className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
@@ -1210,7 +1451,7 @@ export default function Devora() {
         ))}
         <div className="mobile-menu-ctas">
           <button className="btn-outline" onClick={() => scrollTo("contact")}>Contact Us</button>
-          <button className="btn-accent" onClick={() => scrollTo("contact")}>Start Project</button>
+          <a href="https://devoraservices.youcan.store/" target="_blank" rel="noopener noreferrer"><button className="btn-accent">Start Project</button></a>
         </div>
       </div>
 
@@ -1231,7 +1472,7 @@ export default function Devora() {
             We design and build premium, high-converting websites for modern businesses — delivered in 1–3 days.
           </p>
           <div className="hero-ctas">
-            <button className="btn-accent" onClick={() => scrollTo("contact")}>Start Project →</button>
+            <a href="https://devoraservices.youcan.store/" target="_blank" rel="noopener noreferrer"><button className="btn-accent">Start Project →</button></a>
             <button className="btn-outline" onClick={() => scrollTo("services")}>View Services</button>
           </div>
           <div className="hero-stats">
@@ -1281,7 +1522,7 @@ export default function Devora() {
       <section id="services">
         <div className="section-header">
           <div className="section-label">Services</div>
-          <h2 className="section-title">What we build</h2>
+          <h2 className="section-title">Our packages</h2>
           <p className="section-sub">Specialized packages crafted for speed, quality, and results. Every project built to the same premium standard.</p>
         </div>
         <div className="services-grid">
@@ -1312,6 +1553,51 @@ export default function Devora() {
           ))}
         </div>
       </section>
+
+      <div className="divider" />
+
+      <div className="portfolio-section" id="projects">
+        <div className="portfolio-section-inner">
+          <div className="section-header">
+            <div className="section-label">Selected Projects</div>
+            <h2 className="section-title">Work we're proud of</h2>
+            <p className="section-sub">Real websites built for real clients. Every project delivered with premium craft, fast turnaround, and lasting impact.</p>
+          </div>
+          <div className="portfolio-grid">
+            {PROJECTS.map((p, i) => (
+              <div className="portfolio-card fade-in" key={p.client} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div className="portfolio-img-wrap">
+                  <img src={p.img} alt={p.client} loading="lazy" />
+                  <div className="portfolio-year">{p.year}</div>
+                  <div className="portfolio-badge">{p.category}</div>
+                </div>
+                <div className="portfolio-body">
+                  <div className="portfolio-client">{p.client}</div>
+                  <h3>{p.title}</h3>
+                  <p>{p.desc}</p>
+                  <div className="portfolio-card-divider" />
+                  <div className="portfolio-tags">
+                    {p.tags.map((tag) => (
+                      <span className="portfolio-tag" key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="portfolio-bottom-cta fade-in">
+            <div className="portfolio-bottom-cta-text">
+              <p>Want a website like this? <span>Let's build yours.</span></p>
+              <small>Delivered in 1–3 days · Premium quality guaranteed</small>
+            </div>
+            <div className="portfolio-bottom-cta-btn">
+              <a href="https://devoraservices.youcan.store/" target="_blank" rel="noopener noreferrer">
+                <button className="btn-accent">Start Your Project →</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="divider" />
 
@@ -1356,19 +1642,6 @@ export default function Devora() {
         </div>
       </section>
 
-      <div className="pricing-cta-section">
-        <div className="pricing-cta-inner">
-          <div className="pricing-cta-text">
-            <h2>Transparent starting prices.<br />Custom projects available.</h2>
-            <p>No hidden fees. No long contracts. Just clear pricing and premium output.</p>
-          </div>
-          <div className="pricing-cta-btns">
-            <button className="btn-outline" onClick={() => scrollTo("contact")}>Contact Us</button>
-            <button className="btn-accent" onClick={() => scrollTo("contact")}>Start Project →</button>
-          </div>
-        </div>
-      </div>
-
       <div className="divider" />
 
       <section id="faq">
@@ -1399,7 +1672,7 @@ export default function Devora() {
           <h2>Ready to launch<br />your website?</h2>
           <p className="cta-sub">Let's build something premium for your brand.</p>
           <div className="final-cta-btns">
-            <a href="mailto:servicesdevora@gmail.com">
+            <a href="https://devoraservices.youcan.store/" target="_blank" rel="noopener noreferrer">
               <button className="btn-white">Start Project →</button>
             </a>
             <a href="mailto:servicesdevora@gmail.com">
@@ -1449,7 +1722,7 @@ export default function Devora() {
               <h4>Contact</h4>
               <ul>
                 <li><a href="mailto:servicesdevora@gmail.com">servicesdevora@gmail.com</a></li>
-                <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo("contact"); }}>Start a project</a></li>
+                <li><a href="https://devoraservices.youcan.store/" target="_blank" rel="noopener noreferrer">Start a project</a></li>
                 <li><a href="#faq" onClick={(e) => { e.preventDefault(); scrollTo("faq"); }}>FAQ</a></li>
               </ul>
             </div>
